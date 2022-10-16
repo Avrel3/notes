@@ -1,6 +1,7 @@
 {
   "name": "notes-app",
   "version": "1.0.0",
+  "homepage": "https://avrel3.github.io/notes",
   "private": true,
   "dependencies": {
     "@types/jquery": "^3.5.14",
@@ -20,7 +21,7 @@
     "build": "react-scripts build",
     "eject": "react-scripts eject",
     "predeploy": "npm run build",
-    "deploy": ""
+    "deploy": "gh-pages -d build"
   },
   "eslintConfig": {
     "extends": [
