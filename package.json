@@ -11,14 +11,12 @@
   "dependencies": {
     "bootstrap": "^5.2.2",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "react-router-dom": "^6.4.2"
+    "react-dom": "^18.2.0"
   },
   "devDependencies": {
     "@types/node": "^16.11.65",
     "@types/react": "^18.0.21",
     "@types/react-dom": "^18.0.6",
-    "@types/react-router-dom": "^5.3.3",
     "gh-pages": "^4.0.0",
     "parcel": "^2.2.1",
     "process": "^0.11.10",
