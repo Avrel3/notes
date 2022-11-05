@@ -3,8 +3,8 @@
   "version": "1.0.0",
   "homepage": "https://avrel3.github.io/notes",
   "scripts": {
-    "start": "parcel serve src/index.html --no-cache --dist-dir out --cache-dir .cache --open",
-    "build": "parcel build src/index.html --dist-dir build --no-cache --cache-dir .cache",
+    "start": "parcel src/index.html --no-cache --dist-dir out --cache-dir .cache --open --public-url ./",
+    "build": "parcel build src/index.html --dist-dir build --no-cache --cache-dir .cache --public-url ./",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build"
   },
