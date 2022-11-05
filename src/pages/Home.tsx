@@ -1,12 +1,11 @@
 import React from "react";
 import Card from "../components/Card";
-import $ from "jquery";
 
-let store = "note";
+let store = "notes";
 
-export default function Home() {
+export default () => {
 
-    let [list, setList] = React.useState<string[]>([]);
+    let [[list, setList], [input, setInput]] = [React.useState<string[]>([]), React.useState<string>("")]
 
     React.useEffect(
         function () {
@@ -21,10 +20,9 @@ export default function Home() {
     function handler(e: any) {
         e.preventDefault();
 
-        let content: string = $("#item").val() as string;
-        if (content !== "") {
-            setList([...list, content])
-            $('#item').val("");
+        if (input.trim() !== "") {
+            setList([...list, input.trim()])
+            setInput("")
         }
     }
 
@@ -32,7 +30,7 @@ export default function Home() {
         <div className="container mt-2 mb-4">
             <h1 className="text-center mb-3">Notes</h1>
             <form className="form mb-4 d-flex justify-content-between" onSubmit={(e) => handler(e)}>
-                <input defaultValue="" id="item" className="form-control p-2" type="text" placeholder="Add to List" />
+                <input defaultValue="" className="form-control p-2" type="text" onChange={(e) => setInput(e.target.value)} placeholder="Add to List" />
                 &nbsp;
                 <button id="add" type="submit" className="btn">
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="26" fill="currentColor" className="bi bi-plus-circle" viewBox="0 0 16 16">
@@ -42,12 +40,14 @@ export default function Home() {
                 </button>
             </form>
             {
-                list.map((val, idx) => <Card key={idx} content={val} id={idx.toString()} func={function () {
-                    // $(`#${idx}`).remove();
-                    // let items: string | null = window.localStorage.getItem(store);
-                    // let item = JSON.parse(items || '[]');
-                    // let sss = item.filter((value: string, index: number) => idx !== index)
-                    // window.localStorage.setItem(store, JSON.stringify(sss));
+                list.map((val, idx) => <Card key={idx} id={idx} content={val} func={() => {
+                    setList(
+                        list.filter((value: string, index: number) => {
+                            if (index != idx) return value
+                        }).map((val: string) => {
+                            return val
+                        })
+                    )
                 }} />)
             }
         </div>
