@@ -1,12 +1,10 @@
 {
-  "name": "notes-app",
+  "name": "notes",
   "version": "1.0.0",
   "homepage": "https://avrel3.github.io/notes",
-  "type": "module",
   "scripts": {
-    "start": "npx serve build",
-    "dev": "parcel src/index.html --dist-dir out --no-cache",
-    "build": "parcel build src/index.html --dist-dir build --no-cache",
+    "start": "parcel serve src/index.html --no-cache --dist-dir out --cache-dir .cache --open",
+    "build": "parcel build src/index.html --dist-dir build --no-cache --cache-dir .cache",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build"
   },
